@@ -1,0 +1,113 @@
+substitutions:
+  device_name: trellis-minimal
+  friendly_name: Trellis Minimal
+  sda_pin: "6"
+  scl_pin: "7"
+
+esphome:
+  name: $device_name
+  friendly_name: $friendly_name
+
+esp32:
+  board: esp32-c3-devkitm-1
+  framework:
+    type: arduino
+
+external_components:
+  - source: github://nonik0/esphome-adafruit-trellis@main
+    components: [adafruit_trellis]
+
+logger:
+  #level: DEBUG # Uncomment this line for more verbose logging
+
+api:
+  encryption:
+    key: !secret api_key
+
+ota:
+  - platform: esphome
+    password: !secret ota_key
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+i2c:
+  sda: $sda_pin
+  scl: $scl_pin
+  
+adafruit_trellis:
+  - id: trellis
+  #  address: 0x70 # default address
+
+binary_sensor:
+  - platform: adafruit_trellis
+    adafruit_trellis_id: trellis
+    button_1:
+      name: Button 1
+    button_2:
+      name: Button 2
+    button_3:
+      name: Button 3
+    button_4:
+      name: Button 4
+    button_5:
+      name: Button 5
+    button_6:
+      name: Button 6
+    button_7:
+      name: Button 7
+    button_8:
+      name: Button 8
+    button_9:
+      name: Button 9
+    button_10:
+      name: Button 10
+    button_11:
+      name: Button 11
+    button_12:
+      name: Button 12
+    button_13:
+      name: Button 13
+    button_14:
+      name: Button 14
+    button_15:
+      name: Button 15
+    button_16:
+      name: Button 16
+
+switch:
+  - platform: adafruit_trellis
+    adafruit_trellis_id: trellis
+    led_1:
+      name: LED 1
+    led_2:
+      name: LED 2
+    led_3:
+      name: LED 3
+    led_4:
+      name: LED 4
+    led_5:
+      name: LED 5
+    led_6:
+      name: LED 6
+    led_7:
+      name: LED 7
+    led_8:
+      name: LED 8
+    led_9:
+      name: LED 9
+    led_10:
+      name: LED 10
+    led_11:
+      name: LED 11
+    led_12:
+      name: LED 12
+    led_13:
+      name: LED 13
+    led_14:
+      name: LED 14
+    led_15:
+      name: LED 15
+    led_16:
+      name: LED 16
