@@ -27,11 +27,11 @@ void AdafruitTrellis::update() {
     if (this->readSwitches()) {
         for (uint8_t i = 0; i < NUM_KEYS; i++) {
             if (this->justPressed(i)) {
-                ESP_LOGD(TAG, "Pressed: %d", i);
+                ESP_LOGD(TAG, "Pressed: %d", i + 1; // LED numbers are 1-indexed on YAML/UX side
                 publish_state_(this->buttons[i], true);
             }
             if (this->justReleased(i)) {
-                ESP_LOGD(TAG, "Released: %d", i);
+                ESP_LOGD(TAG, "Released: %d", i + 1); // LED numbers are 1-indexed on YAML/UX side
                 publish_state_(this->buttons[i], false);
             }
         }
